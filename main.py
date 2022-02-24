@@ -3,6 +3,7 @@ import sys
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5 import uic
+from edit_window import editWindow
 
 
 class MainWindow(QMainWindow):
@@ -20,6 +21,11 @@ class MainWindow(QMainWindow):
         model.setTable('coffee')
         model.select()
         self.tableView.setModel(model)
+        self.pushButton.clicked.connect(self.show_edit)
+
+    def show_edit(self):
+        ew = editWindow()
+        ew.exec_()
 
 
 if __name__ == '__main__':
